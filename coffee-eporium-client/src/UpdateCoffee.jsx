@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateCoffee = () => {
     const updatedData=useLoaderData()
@@ -24,7 +25,8 @@ const UpdateCoffee = () => {
         })
             .then(res=>res.json())
             .then(data=>{
-                if(data.modifiedId){
+                console.log(data)
+                if(data.modifiedCount>0){
                   Swal.fire({
                     title: 'Success!',
                     text: 'Coffee updated successfully',
@@ -41,7 +43,7 @@ const UpdateCoffee = () => {
           <div className="flex justify-between items-center w-2/3 mx-auto">
             <div className="space-y-3">
               <label class="input input-bordered flex items-center gap-2">
-                Name
+                Product Name
                 <input type="text" name="name" class="grow" defaultValue={name} placeholder="Name" />
               </label>
               <label class="input input-bordered flex items-center gap-2">
